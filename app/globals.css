@@ -25,7 +25,7 @@
 }
 
 body {
-  color: var(--foreground);
+  overflow-x: hidden;
   background-image: url('../public/dot-bg.png');
   background-size: 45px, 45px;
   background-repeat: repeat;
