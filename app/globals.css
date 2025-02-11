@@ -14,8 +14,28 @@
   }
 }
 
+@font-face {
+  font-family: "Champagne";
+  src: url('../public/font/ChampagneAndLimousinesBold-myr2.ttf');
+}
+
+@font-face {
+  font-family: "Fontspring";
+  src: url('../public/font/fontspring-demo-27.ttf');
+}
+
 body {
   color: var(--foreground);
-  background: var(--background);
+  background-image: url('../public/dot-bg.png');
+  background-size: 45px, 45px;
+  background-repeat: repeat;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.topbar-font {
+  font-family: "Champagne", sans-serif;
+}
+
+.banner-font {
+  font-family: "Fontspring", sans-serif;
 }
