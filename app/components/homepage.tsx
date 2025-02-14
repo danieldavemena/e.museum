@@ -15,9 +15,9 @@ const homepage = () => {
         <h1 className="banner-font text-gray-500 text-6xl tracking-wider">A Description to Brand</h1>
       </div>
       <div className='card-container group absolute top-[67%] flex items-center w-svw flex-col ' >
-        <div className="card-4 absolute shadow-md shadow-gray-600 transform -rotate-[3deg] bg-gray-300 h-96 w-72 rounded-lg transition-all duration-300 ease-in-out group-hover:-translate-x-[300px] group-hover:translate-y-[65px] group-hover:-rotate-[17deg]" >
+        <div className="card-4 absolute shadow-md shadow-gray-600 transform -rotate-[3deg] bg-gray-300 h-96 w-72 rounded-lg transition-all duration-[400ms] ease-in-out group-hover:-translate-x-[300px] group-hover:translate-y-[65px] group-hover:-rotate-[17deg]" >
         </div>
-        <div className="card-3 absolute shadow-md shadow-gray-600 transform rotate-[1deg] bg-gray-300 h-96 w-72 rounded-lg transition-all duration-300 ease-in-out group-hover:translate-x-[300px] group-hover:translate-y-[65px] group-hover:rotate-[17deg]" >
+        <div className="card-3 absolute shadow-md shadow-gray-600 transform rotate-[1deg] bg-gray-300 h-96 w-72 rounded-lg transition-all duration-[400ms] ease-in-out group-hover:translate-x-[300px] group-hover:translate-y-[65px] group-hover:rotate-[17deg]" >
         </div>
         <div className="card-2 absolute shadow-md shadow-gray-600 transform rotate-[2deg] bg-gray-400 h-96 w-72 rounded-lg transition-all duration-300 ease-in-out group-hover:translate-x-[150px] group-hover:translate-y-[20px] group-hover:rotate-[10deg]" >
         </div>
