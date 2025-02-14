@@ -3,7 +3,7 @@ import Homepage from "./components/homepage"
 
 export default function Home() {
   return (
-    <div  className="h-screen">
+    <div  className="">
       <Topbar/>
       <Homepage/>
       <div className="h-screen">
