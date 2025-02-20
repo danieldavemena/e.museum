@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Topbar from "../components/topbar";
 import supabase from "@/lib/initSupabase";
 
 const page = () => {
-  const [data, setData] = React.useState<{ id: string; title: string }[]>([]);
-  React.useEffect(() => {
+  const [data, setData] = useState<{ id: string; title: string }[]>([]);
+  useEffect(() => {
     const getData = async () => {
       const { data, error } = await supabase.from("Sample").select();
       if (error) {
