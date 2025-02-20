@@ -9,7 +9,13 @@ const page = () => {
   React.useEffect(() => {
     const getData = async () => {
       const { data, error } = await supabase.from("Sample").select();
-      setData(data || []);
+      if (error) {
+        console.log(error);
+      }
+
+      if (data) {
+        setData(data || []);
+      }
     };
 
     getData();
