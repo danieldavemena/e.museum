@@ -23,6 +23,4 @@ export async function register(email: string, password: string) {
 
 export async function logout() {
   const { error } = await supabase.auth.signOut();
-
-  redirect("/login");
 }
