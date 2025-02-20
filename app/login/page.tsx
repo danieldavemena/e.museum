@@ -1,6 +1,23 @@
+"use client";
+
 import React from "react";
+import supabase from "../../lib/initSupabase";
+import { useEffect, useState } from "react";
 
 const page = () => {
+  const [data, changeData] = useState(null);
+
+  const getData = async () => {
+    const { data, error } = await supabase.from("Sample").select();
+
+    if (data) {
+      changeData(error);
+      console.log(data);
+    }
+  };
+
+  getData();
+
   return (
     <div>
       <div className="fixed m-2 top-0 right-0 h-10 w-10 bg-gray-200"></div>
