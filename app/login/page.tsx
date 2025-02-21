@@ -7,6 +7,7 @@ import Account from "../components/account";
 
 const page = () => {
   const [user, setUser] = useState(false);
+  const [display, setDisplay] = useState(<></>);
 
   useEffect(() => {
     const getUser = async () => {
@@ -18,15 +19,17 @@ const page = () => {
 
       if (user) {
         setUser(true);
+        setDisplay(<Account />);
       } else {
         setUser(false);
+        setDisplay(<AuthGate />);
       }
     };
 
     getUser();
   });
 
-  return <div>{user ? <Account /> : <AuthGate />}</div>;
+  return <div>{display}</div>;
 };
 
 export default page;

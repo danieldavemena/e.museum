@@ -12,13 +12,21 @@ export async function signIn(email: string, password: string) {
   redirect("/login");
 }
 
-export async function register(email: string, password: string) {
-  const data = {
+export async function register(
+  email: string,
+  password: string,
+  confirm: string
+) {
+  const creds = {
     email: email,
     password: password,
   };
 
-  const { error } = await supabase.auth.signUp(data);
+  if (password == confirm) {
+    const { data, error } = await supabase.auth.signUp(creds);
+
+    redirect("/login");
+  }
 }
 
 export async function logout() {
