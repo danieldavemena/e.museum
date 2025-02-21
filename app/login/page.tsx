@@ -15,7 +15,6 @@ const page = () => {
         data: { user },
       } = await supabase.auth.getUser();
 
-      console.log(user);
 
       if (user) {
         setUser(true);
