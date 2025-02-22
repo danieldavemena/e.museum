@@ -27,22 +27,18 @@ const account = () => {
 
   return (
     <div>
-     <div className="grid grid-flow-col grid-rows-2 gap-5 p-5">
-     <div className="row-span-2 row-start-2">
-        <div className="flex flex-col bg-gray-200 p-[25px] rounded-lg">
-          <div className="flex-grow text-md text-gray-700">
-            {email}
-          </div>
-          <form >
-            <button formAction={logout} className="topbar-font text-xl shadow-md shadow-gray-400 text-gray-200 bg-red-500 rounded-lg w-[100%] h-10 self-end">
-              <h1>Log out</h1>
-            </button>
-          </form>
+      <div className="fixed w-min p-5 items-end flex flex-col gap-5 top-0 right-0">
+        <div className="h-10 w-10  bg-gray-900 rounded-3xl">
+        </div>
+
+        <div className="shadow-md flex transition-opacity duration-300 ease-in-out flex-col p-2 shadow-gray-800 bg-gray-900 rounded-md h-[400px] w-[250px]">
+          <h3 className="text-gray-500 flex-grow">{email}</h3>
+          <button onClick={logout} className="bg-red-400 text-gray-200 rounded-md py-2 ">Log out</button>
         </div>
       </div>
-     </div>
     </div>
   );
 };
+
 
 export default account;

@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Topbar = () => {
   return (
-    <div className="topbar-font text-xl h-20 px-12 flex w-screen items-center justify-center">
+    <div className="topbar-font sticky top-0 text-xl h-20 px-12 flex w-screen items-center justify-center">
       <div className="flex text-white ml-0 mr-auto gap-8">
         <nav className="flex justify-center gap-8">
           <Link href="/discover">Discover</Link>
