@@ -22,11 +22,11 @@ const Topbar = () => {
         <div className="flex flex-row gap-2 px-4 py-2 bg-gray-900 rounded-3xl">
           <h3>Item</h3>
         </div>
-        <div className="flex flex-row gap-2 px-4 py-2 bg-grey-800 rounded-3xl">
+        <div className="flex flex-row gap-2 px-4 py-2 bg-gray-900 rounded-3xl">
           <h3>Item</h3>
         </div>
         <Link href="/login">
-          <div className="flex flex-row gap-2 px-4 py-2 bg-grey-800 rounded-3xl">
+          <div className="flex flex-row gap-2 px-4 py-2 bg-gray-900 rounded-3xl">
             <h3>Login</h3>
           </div>
         </Link>
