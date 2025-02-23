@@ -33,6 +33,7 @@ const page = () => {
           );
         })}
       </div>
+      <div className="fixed bottom-0 right-5 h-12 w-12 bg-gray-900  m-5 rounded-3xl"></div>
     </div>
   );
 };
