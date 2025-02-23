@@ -42,9 +42,11 @@ const account = () => {
 
         <div style={{
           display: dropdown
-        }} className="absolute top-20 shadow-md  transition-opacity duration-300 ease-in-out flex-col p-2 shadow-gray-800 bg-gray-900 rounded-md h-[400px] w-[250px]">
+        }} className="absolute top-20 shadow-md items-center w-max [&>*]:transition duration-300 ease-in-out flex-col p-2 shadow-gray-800 bg-gray-900 rounded-md h-[400px] w-[250px]">
           <h3 className="text-gray-500 flex-grow">{email}</h3>
-          <button onClick={logout} className="bg-red-400 text-gray-200 rounded-md py-2 ">Log out</button>
+          <h3 className="hover:bg-gray-800 cursor-pointer text-gray-500 w-full px-2  py-2">View profile</h3>
+          <h3 className="hover:bg-gray-800 cursor-pointer text-gray-500 w-full px-2 py-2">Settings</h3>
+          <button onClick={logout} className="mt-5 bg-red-400 w-full text-gray-200 rounded-md py-2 ">Log out</button>
         </div>
       </div>
     </div>
