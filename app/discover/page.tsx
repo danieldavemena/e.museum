@@ -6,6 +6,8 @@ import supabase from "@/lib/initSupabase";
 
 const page = () => {
   const [data, setData] = useState<{ id: string; title: string }[]>([]);
+  const [modal, setModal] = useState(false)
+  
   useEffect(() => {
     const getData = async () => {
       const { data, error } = await supabase.from("Sample").select();
@@ -21,6 +23,14 @@ const page = () => {
     getData();
   });
 
+  const postModal = () => {
+    if (modal == false) {
+      setModal(true)
+    } else {
+      setModal(false)
+    }
+  }
+
   return (
     <div>
       <Topbar />
@@ -33,9 +43,20 @@ const page = () => {
           );
         })}
       </div>
-      <div className="fixed bottom-0 right-5 h-12 w-12 bg-gray-900  m-5 rounded-3xl"></div>
+      <div onClick={postModal} className="fixed bottom-0 right-5 h-12 w-12 bg-gray-900  m-5 rounded-3xl"></div>
+      {modal && (
+        <ModalElement />
+      )} 
     </div>
   );
 };
+
+const ModalElement = () => {
+  return ( 
+    <div>
+      blabla
+    </div>
+  )
+}
 
 export default page;
