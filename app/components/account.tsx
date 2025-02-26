@@ -49,7 +49,11 @@ const account = () => {
  
 };
 
-const DropdrownElement = ({email}) => {
+interface DropdrownElementProps {
+  email: String | undefined;
+}
+
+const DropdrownElement:React.FC<DropdrownElementProps> = ({email}) => {
   return (
     <div  className={`absolute top-20 flex animate-fade-in shadow-md items-center w-max [&>*]:transition duration-300 ease-in-out flex-col p-2 shadow-gray-800 bg-gray-900 rounded-md`}>
       <h3 className="text-gray-500 flex-grow">{email}</h3>
