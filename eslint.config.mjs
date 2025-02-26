@@ -17,6 +17,7 @@ module.exports = {
   extends: "next/core-web-vitals",
   rules: {
     "react/hook-use-state": "off",
+    'react/jsx-no-bind': "off",
   },
 };
 

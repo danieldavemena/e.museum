@@ -63,13 +63,16 @@ const page = () => {
 const ModalElement = ({closing}) => {
   return ( 
     <div>
-      <div className="fixed top-0 left-0 w-full h-full animate-fade-in  bg-gray-900 opacity-50">
+      <div className="fixed top-0 left-0 w-full h-full animate-fade-in opacity-50 bg-gray-900 ">
       
       </div>
       <div className="fixed w-20 h-20 bg-gray-300 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <div onClick={closing} className="bg-red-400 h-5 w-5">
 
           </div>
+          <form>
+            
+          </form>
       </div>
     </div>
   )
