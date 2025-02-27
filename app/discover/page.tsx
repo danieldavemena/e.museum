@@ -30,7 +30,7 @@ const page = () => {
   const postModal = () => {
     if (modal == false) {
       setModal(true)
-      setBlur("blur-lg")
+      setBlur("blur-md")
     } else {
       setModal(false)
       setBlur("")
@@ -66,6 +66,33 @@ interface ModalElementProps {
 }
 
 const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
+
+  const [photoFile, setFile ] = useState<File | null>()
+  const [fileString, setFilestring] = useState("")
+
+  const fileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files ? e.target.files[0] : null;
+    if (selectedFile) {
+      setFile(selectedFile)
+      setFilestring(`/${selectedFile.name}`)
+    }
+  }
+
+
+  const upload = async() => {
+    if (photoFile != null) {
+      const {data, error} = await supabase.storage.from('posts').upload(fileString, photoFile)
+
+      
+      if (data) {
+        const {data} = await supabase.storage.from('posts').getPublicUrl(fileString)
+        if (data) {
+          console.log(data)
+        }
+      }
+    }
+  }
+
   return (
     <div>
       <div className="fixed top-0 left-0 w-full h-full animate-fade-in opacity-50 bg-gray-900 "></div>
@@ -73,7 +100,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
         <div onClick={closing} className="absolute bg-red-400 rounded-lg top-0 right-0 p-1 m-5">
           <LuArrowBigLeft color="oklch(0.967 0.003 264.542)" size={30}/>
         </div>
-        <form className="topbar-font mt-12 flex flex-col gap-5">
+        <form onSubmit={(e: React.FormEvent) => {e.preventDefault()}} className="topbar-font mt-12 flex flex-col gap-5">
           <div className="flex flex-row gap-5">
           <textarea
             className="w-[400px] h-[200px] rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
@@ -85,10 +112,10 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
         </label>
 
         
-        <input className="hidden" type="file" name="" id="file-select" />
+        <input onChange={fileChange} className="hidden" type="file" name="" id="file-select" />
           </div>
           <div>
-            <button className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5">
+            <button onClick={upload} className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5">
               Upload
             </button>
           </div>
