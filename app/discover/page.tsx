@@ -4,17 +4,19 @@ import React, { useState, useEffect } from "react";
 import Topbar from "../components/topbar";
 import supabase from "@/lib/initSupabase";
 import { LuFileImage, LuArrowBigLeft, LuCirclePlus } from "react-icons/lu";
+import Image from "next/image";
+import { url } from "inspector";
 
 
 
 const page = () => {
-  const [data, setData] = useState<{ id: string; title: string }[]>([]);
+  const [data, setData] = useState<{id: string, image: string }[]>([]);
   const [modal, setModal] = useState(false)
   const [blur, setBlur] = useState("")
   
   useEffect(() => {
     const getData = async () => {
-      const { data, error } = await supabase.from("Sample").select();
+      const { data, error } = await supabase.from("user_posts").select();
       if (error) {
         console.log(error);
       }
@@ -47,7 +49,7 @@ const page = () => {
         {data.map((datas) => {
           return (
             <div className="bg-gray-200" key={datas.id}>
-              {datas.title}
+              <Image src={datas.image} layout="intrinsic" width={0} height={0} alt="post"/>
             </div>
           );
         })}
@@ -68,6 +70,7 @@ interface ModalElementProps {
 const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
 
   const [photoFile, setFile ] = useState<File | null>()
+  const [preview, setPreview] = useState("")
   const [fileString, setFilestring] = useState("")
 
   const fileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,6 +78,8 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
     if (selectedFile) {
       setFile(selectedFile)
       setFilestring(`/${selectedFile.name}`)
+      const url = URL.createObjectURL(selectedFile)
+      setPreview(url)
     }
   }
 
@@ -87,7 +92,9 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
       if (data) {
         const {data} = await supabase.storage.from('posts').getPublicUrl(fileString)
         if (data) {
-          console.log(data)
+          
+          const {error} = await supabase.from('user_posts').insert({image: data.publicUrl})
+
         }
       }
     }
@@ -107,7 +114,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
           />
         <label htmlFor="file-select">
           <div className="flex flex-col items-center rounded-lg justify-center bg-gray-300 h-[200px] w-[200px]">
-            <LuFileImage color="oklch(0.552 0.016 285.938)" size={50}/>
+            {photoFile ? <Image src={preview} height={200} width={200} alt="uploaded_image"/> : <LuFileImage color="oklch(0.552 0.016 285.938)" size={50}/>}
           </div>
         </label>
 
