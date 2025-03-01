@@ -25,6 +25,7 @@ const page = () => {
       }
     };
 
+
     getData();
   });
 
@@ -44,11 +45,11 @@ const page = () => {
     <div>
       <div className={`${blur} transition duration-150 ease-in-out`}>
       <Topbar />
-      <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 p-5 [&>*]:rounded-lg [&>!first-child]:mt-3">
+      <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 p-5 [&>*]:rounded-lg [&>:not(:first-child)]:mt-3">
         {data.map((datas) => {
           return (
-            <div className="bg-gray-200" key={datas.id}>
-              <Image src={datas.image} layout="intrinsic" width={0} height={0} alt="post"/>
+            <div className="bg-gray-200 p-5" key={datas.id}>
+              <Image src={datas.image} layout="responsive" width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post"/>
             </div>
           );
         })}
