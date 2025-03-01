@@ -5,7 +5,6 @@ import Topbar from "../components/topbar";
 import supabase from "@/lib/initSupabase";
 import { LuFileImage, LuArrowBigLeft, LuCirclePlus } from "react-icons/lu";
 import Image from "next/image";
-import { url } from "inspector";
 
 
 
