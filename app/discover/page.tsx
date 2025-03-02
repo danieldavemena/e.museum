@@ -9,7 +9,7 @@ import Image from "next/image";
 
 
 const page = () => {
-  const [data, setData] = useState<{id: string, image: string }[]>([]);
+  const [data, setData] = useState<{id: string, image: string, post_description: string }[]>([]);
   const [modal, setModal] = useState(false)
   const [blur, setBlur] = useState("")
   
@@ -50,6 +50,7 @@ const page = () => {
           return (
             <div className="bg-gray-200 p-5" key={datas.id}>
               <Image src={datas.image} layout="responsive" width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post"/>
+              {datas.post_description}
             </div>
           );
         })}
@@ -70,6 +71,7 @@ interface ModalElementProps {
 const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
 
   const [photoFile, setFile ] = useState<File | null>()
+  const [descript, setDescript] = useState("")
   const [preview, setPreview] = useState("")
   const [fileString, setFilestring] = useState("")
 
@@ -83,6 +85,11 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
     }
   }
 
+  const descriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputDesc = e.target.value
+    setDescript(inputDesc)
+  }
+
 
   const upload = async() => {
     if (photoFile != null) {
@@ -93,7 +100,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
         const {data} = await supabase.storage.from('posts').getPublicUrl(fileString)
         if (data) {
           
-          const {error} = await supabase.from('user_posts').insert({image: data.publicUrl})
+          const {error} = await supabase.from('user_posts').insert({post_description: descript, image: data.publicUrl})
 
         }
       }
@@ -109,12 +116,13 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
         </div>
         <form onSubmit={(e: React.FormEvent) => {e.preventDefault()}} className="topbar-font mt-12 flex flex-col gap-5">
           <div className="flex flex-row gap-5">
-          <textarea
+          <textarea 
+            onChange={descriptionChange}
             className="w-[400px] h-[200px] rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
           />
         <label htmlFor="file-select">
           <div className="flex flex-col items-center rounded-lg justify-center bg-gray-300 h-[200px] w-[200px]">
-            {photoFile ? <Image src={preview} height={200} width={200} alt="uploaded_image"/> : <LuFileImage color="oklch(0.552 0.016 285.938)" size={50}/>}
+            {photoFile ? <Image src={preview} className="object-cover" layout="responsive" height={200} width={200} alt="uploaded_image"/> : <LuFileImage color="oklch(0.552 0.016 285.938)" size={50}/>}
           </div>
         </label>
 
