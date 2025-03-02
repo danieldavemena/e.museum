@@ -12,6 +12,7 @@ const page = () => {
   const [data, setData] = useState<{id: string, image: string, post_description: string }[]>([]);
   const [modal, setModal] = useState(false)
   const [blur, setBlur] = useState("")
+  const [isLoading, setComplete] = useState(true)
   
   useEffect(() => {
     const getData = async () => {
@@ -39,6 +40,10 @@ const page = () => {
     }
   }
 
+
+  const loaded = () => {
+    setComplete(false)
+  }
   
 
   return (
@@ -49,7 +54,7 @@ const page = () => {
         {data.map((datas) => {
           return (
             <div className="bg-gray-200 p-5" key={datas.id}>
-              <Image src={datas.image} width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post" loading="lazy"/>
+              <Image src={datas.image} width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post" loading="lazy" onLoadingComplete={loaded}/>
               {datas.post_description}
             </div>
           );
