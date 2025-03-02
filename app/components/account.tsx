@@ -24,7 +24,7 @@ const account = () => {
     };
 
     getUser();
-  });
+  }, []);
 
   const openDropdown = () => {
     if (dropdown == false) {

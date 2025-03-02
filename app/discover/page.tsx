@@ -27,7 +27,7 @@ const page = () => {
 
 
     getData();
-  });
+  }, [] );
 
   const postModal = () => {
     if (modal == false) {

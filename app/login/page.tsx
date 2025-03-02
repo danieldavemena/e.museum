@@ -26,7 +26,7 @@ const page = () => {
     };
 
     getUser();
-  });
+  }, []);
 
   return <div>{display}</div>;
 };
