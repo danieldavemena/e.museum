@@ -49,7 +49,7 @@ const page = () => {
         {data.map((datas) => {
           return (
             <div className="bg-gray-200 p-5" key={datas.id}>
-              <Image src={datas.image} layout="responsive" width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post"/>
+              <Image src={datas.image} width={500} height={500} unoptimized className="object-cover rounded-lg" alt="post"/>
               {datas.post_description}
             </div>
           );
