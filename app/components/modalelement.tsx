@@ -69,7 +69,8 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
           
           <input onChange={fileChange} className="hidden" type="file" name="" id="file-select" />
             </div>
-            <div>
+            <div className='flex flex-row gap-5'>
+              <input type="text" name="" id="" className='rounded-lg bg-gray-300'/>
               <button onClick={upload} className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5">
                 Upload
               </button>
