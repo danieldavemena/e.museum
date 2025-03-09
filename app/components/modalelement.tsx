@@ -53,7 +53,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
       <div className="fixed bg-transparent w-full h-full  animate-fade-in top-0 left-0">
         <div
           onClick={closing}
-          className="absolute bg-red-400 rounded-lg top-0 right-0 p-1 m-5"
+          className="absolute cursor-pointer bg-red-400 rounded-lg top-0 right-0 p-1 m-5"
         >
           <LuArrowBigLeft color="oklch(0.967 0.003 264.542)" size={30} />
         </div>
