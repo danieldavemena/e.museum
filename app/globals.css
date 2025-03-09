@@ -16,20 +16,27 @@
 
 @font-face {
   font-family: "Champagne";
-  src: url('../public/font/ChampagneAndLimousinesBold-myr2.ttf');
+  src: url("../public/font/ChampagneAndLimousinesBold-myr2.ttf");
 }
 
 @font-face {
   font-family: "Fontspring";
-  src: url('../public/font/fontspring-demo-27.ttf');
+  src: url("../public/font/fontspring-demo-27.ttf");
 }
 
 body {
   overflow-x: hidden;
-  background-image: url('../public/dot-bg.png');
+  background-image: url("../public/dot-bg.png");
   background-size: 45px, 45px;
   background-repeat: repeat;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.bodyBG {
+  overflow-x: hidden;
+  background-image: url("../public/dot-bg.png");
+  background-size: 45px, 45px;
+  background-repeat: repeat;
 }
 
 .topbar-font {
@@ -49,21 +56,21 @@ body {
   display: block;
   margin: -50px auto 0;
   position: relative;
-  color: #FFF;
+  color: #fff;
   transform: translateY(30px);
   box-sizing: border-box;
   animation: animloader 2s ease infinite;
 }
 .loader::after,
 .loader::before {
-  content: '';  
+  content: "";
   box-sizing: border-box;
   width: 16px;
   height: 16px;
   box-shadow: 0 30px, 0 -30px;
   border-radius: 4px;
   background: currentColor;
-  color: #FFF;
+  color: #fff;
   position: absolute;
   left: 30px;
   top: 0;

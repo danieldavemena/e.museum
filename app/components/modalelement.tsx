@@ -50,8 +50,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
 
   return (
     <div>
-      <div className="fixed top-0 left-0 w-full h-full animate-fade-in opacity-50 bg-gray-900 "></div>
-      <div className="fixed p-5 rounded-lg bg-gray-200 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="fixed bg-transparent w-full h-full  animate-fade-in top-0 left-0">
         <div
           onClick={closing}
           className="absolute bg-red-400 rounded-lg top-0 right-0 p-1 m-5"
@@ -62,52 +61,62 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
           onSubmit={(e: React.FormEvent) => {
             e.preventDefault();
           }}
-          className="topbar-font mt-12 flex flex-col gap-5"
+          className="topbar-font flex flex-row"
         >
-          <div className="flex flex-row gap-5">
-            <textarea
-              onChange={descriptionChange}
-              className="w-[400px] h-[200px] rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
-            />
-            <label htmlFor="file-select">
-              <div className="flex flex-col items-center rounded-lg justify-center bg-gray-300 h-[200px] w-[200px]">
-                {photoFile ? (
-                  <Image
-                    src={preview}
-                    width={0}
-                    height={0}
-                    sizes="100vw"
-                    className="rounded-lg overflow-y-hidden w-full h-auto "
-                    alt="uploaded_image"
-                  />
-                ) : (
-                  <LuFileImage color="oklch(0.552 0.016 285.938)" size={50} />
-                )}
-              </div>
-            </label>
+          <div className="flex flex-col w-[50svw] bg-gray-200 justify-center items-center ">
+            <div className="flex flex-col">
+              <label htmlFor="" className="text-gray-600">
+                Post Description:
+              </label>
+              <textarea
+                onChange={descriptionChange}
+                className="w-[500px] h-[200px] resize-none rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
+              />
+            </div>
 
-            <input
-              onChange={fileChange}
-              className="hidden"
-              type="file"
-              name=""
-              id="file-select"
-            />
+            <div className="flex flex-row w-[500px] justify-end gap-3">
+              <input
+                type="text"
+                name=""
+                id=""
+                className="rounded-lg bg-gray-300"
+              />
+              <button
+                onClick={upload}
+                className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5"
+              >
+                Upload
+              </button>
+            </div>
           </div>
-          <div className="flex flex-row gap-5">
-            <input
-              type="text"
-              name=""
-              id=""
-              className="rounded-lg bg-gray-300"
-            />
-            <button
-              onClick={upload}
-              className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5"
-            >
-              Upload
-            </button>
-          </div>
+
+          <label htmlFor="file-select">
+            <div className="flex flex-col w-[50svw] items-center bodyBG  justify-center  h-screen">
+              {photoFile ? (
+                <Image
+                  src={preview}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className=" overflow-y-hidden w-full h-auto "
+                  alt="uploaded_image"
+                />
+              ) : (
+                <div className="flex flex-col justify-center items-center gap-4">
+                  <h2 className="text-2xl text-gray-600">Upload an Image</h2>
+                  <LuFileImage color="oklch(0.552 0.016 285.938)" size={80} />
+                </div>
+              )}
+            </div>
+          </label>
+
+          <input
+            onChange={fileChange}
+            className="hidden"
+            type="file"
+            name=""
+            id="file-select"
+          />
         </form>
       </div>
     </div>
