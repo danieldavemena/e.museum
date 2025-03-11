@@ -10,6 +10,7 @@ interface ModalElementProps {
 
 const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
   const [photoFile, setFile] = useState<File | null>();
+  const [title, setTitle] = useState("");
   const [descript, setDescript] = useState("");
   const [preview, setPreview] = useState("");
   const [fileString, setFilestring] = useState("");
@@ -22,6 +23,11 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
       const url = URL.createObjectURL(selectedFile);
       setPreview(url);
     }
+  };
+
+  const titleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const inputTitle = e.target.value;
+    setTitle(inputTitle);
   };
 
   const descriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -40,9 +46,11 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
           .from("posts")
           .getPublicUrl(fileString);
         if (data) {
-          const { error } = await supabase
-            .from("user_posts")
-            .insert({ post_description: descript, image: data.publicUrl });
+          const { error } = await supabase.from("user_posts").insert({
+            title: title,
+            post_description: descript,
+            image: data.publicUrl,
+          });
         }
       }
     }
@@ -66,6 +74,16 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
           <div className="flex flex-col w-[50svw] bg-gray-200 justify-center items-center ">
             <div className="flex flex-col">
               <label htmlFor="" className="text-gray-600">
+                Title:
+              </label>
+              <textarea
+                onChange={titleChange}
+                className="w-[500px] h-[40px] resize-none rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label htmlFor="" className="text-gray-600">
                 Post Description:
               </label>
               <textarea
@@ -75,12 +93,6 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
             </div>
 
             <div className="flex flex-row w-[500px] justify-end gap-3">
-              <input
-                type="text"
-                name=""
-                id=""
-                className="rounded-lg bg-gray-300"
-              />
               <button
                 onClick={upload}
                 className="text-gray-400 bg-gray-900 rounded-lg py-2 px-5"
@@ -97,8 +109,7 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
                   src={preview}
                   width={0}
                   height={0}
-                  sizes="100vw"
-                  className=" overflow-y-hidden w-full h-auto "
+                  className="object-fit size-auto"
                   alt="uploaded_image"
                 />
               ) : (

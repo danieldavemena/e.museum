@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const page = () => {
   const [data, setData] = useState<
-    { id: string; image: string; post_description: string }[]
+    { id: string; image: string; post_description: string; title: string }[]
   >([]);
   const [modal, setModal] = useState(false);
   const [blur, setBlur] = useState("");
@@ -51,7 +51,7 @@ const page = () => {
         <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 p-5 [&>*]:rounded-lg [&>:not(:first-child)]:mt-3">
           {data.map((datas) => {
             return (
-              <div className="bg-gray-200 p-5" key={datas.id}>
+              <div className="text-gray-300 flex flex-col gap-4" key={datas.id}>
                 <Image
                   src={datas.image}
                   width={500}
@@ -59,10 +59,8 @@ const page = () => {
                   unoptimized
                   className="object-cover rounded-lg"
                   alt="post"
-                  loading="lazy"
-                  onLoadingComplete={loaded}
                 />
-                {datas.post_description}
+                {datas.title}
               </div>
             );
           })}
