@@ -6,9 +6,10 @@ import Image from "next/image";
 
 interface ModalElementProps {
   closing: () => void;
+  update: () => void;
 }
 
-const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
+const ModalElement: React.FC<ModalElementProps> = ({ closing, update }) => {
   const [photoFile, setFile] = useState<File | null>();
   const [title, setTitle] = useState("");
   const [descript, setDescript] = useState("");
@@ -52,6 +53,9 @@ const ModalElement: React.FC<ModalElementProps> = ({ closing }) => {
             image: data.publicUrl,
           });
         }
+
+        update();
+        closing();
       }
     }
   };

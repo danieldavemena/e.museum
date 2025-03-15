@@ -15,18 +15,20 @@ const page = () => {
   const [blur, setBlur] = useState("");
   const [isLoading, setComplete] = useState(true);
 
+  const getData = async () => {
+    const { data, error } = await supabase.from("user_posts").select();
+    if (error) {
+      console.log(error);
+    }
+
+    if (data) {
+      setData(data || []);
+
+      console.log("umuulit");
+    }
+  };
+
   useEffect(() => {
-    const getData = async () => {
-      const { data, error } = await supabase.from("user_posts").select();
-      if (error) {
-        console.log(error);
-      }
-
-      if (data) {
-        setData(data || []);
-      }
-    };
-
     getData();
   }, []);
 
@@ -72,7 +74,7 @@ const page = () => {
       >
         <LuCirclePlus color="oklch(0.552 0.016 285.938)" size={50} />
       </div>
-      {modal && <ModalElement closing={postModal} />}
+      {modal && <ModalElement closing={postModal} update={getData} />}
     </div>
   );
 };
