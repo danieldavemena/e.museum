@@ -16,7 +16,10 @@ const page = () => {
   const [isLoading, setComplete] = useState(true);
 
   const getData = async () => {
-    const { data, error } = await supabase.from("user_posts").select();
+    const { data, error } = await supabase
+      .from("user_posts")
+      .select()
+      .order("id", { ascending: false });
     if (error) {
       console.log(error);
     }
