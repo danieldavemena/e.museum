@@ -15,7 +15,6 @@ const page = () => {
         data: { user },
       } = await supabase.auth.getUser();
 
-
       if (user) {
         setUser(true);
         setDisplay(<Account />);
@@ -28,7 +27,12 @@ const page = () => {
     getUser();
   }, []);
 
-  return <div>{display}</div>;
+  return (
+    <div>
+      {/* {display} */}
+      <Account />
+    </div>
+  );
 };
 
 export default page;

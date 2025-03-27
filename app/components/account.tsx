@@ -3,12 +3,16 @@
 import React, { useEffect, useState } from "react";
 import { logout } from "../auth/auth";
 import supabase from "@/lib/initSupabase";
-import Topbar from "./topbar";
 import Link from "next/link";
+import Image from "next/image";
+import profile from "@/public/devImages/profile.jpg";
 
 const account = () => {
   const [email, setEmail] = useState<String>();
   const [dropdown, setDropdown] = useState(false);
+  const separator = (color: string) => {
+    return <div className={`h-[2px] w-full mt-4 rounded-full ${color}`}></div>;
+  };
 
   useEffect(() => {
     const getUser = async () => {
@@ -46,6 +50,48 @@ const account = () => {
         ></div>
         {dropdown && <DropdrownElement email={email} />}
       </div>
+      <main className="flex flex-row">
+        <aside className=" p-5 flex flex-col">
+          <div className="rounded-md relative w-[375px] p-5 bg-gray-300">
+            <div className="flex flex-row">
+              <div className="size-[55px] rounded-full  overflow-hidden">
+                <Image src={profile} alt="Profile" className="object-contain" />
+              </div>
+              <div className="ml-3 flex flex-col">
+                <p className="banner-font text-[20px]">isnotDave</p>
+                <p className="topbar-font">[insert Bio]</p>
+              </div>
+            </div>
+            {separator("bg-gray-400")}
+            <div className="flex flex-row ml-2 mr-2 mt-4 text-gray-900">
+              <div>
+                <p className="topbar-font">Account Age: </p>
+                <p className="topbar-font">Artworks: </p>
+                <p className="topbar-font">Stars: </p>
+              </div>
+              <div className="mr-0 ml-auto">
+                <p className="topbar-font">5 </p>
+                <p className="topbar-font">8 </p>
+                <p className="topbar-font">69 </p>
+              </div>
+            </div>
+          </div>
+          <section className="mt-5 ml-2 mr-2">
+            <header className="flex flex-row text-gray-500 topbar-font text-[23px]">
+              <p>Folders</p>
+              <p className="ml-auto mr-0">2 </p>
+            </header>
+            {separator("bg-gray-700")}
+            <div className="mt-4 banner-font w-full flex flex-col gap-2 text-[18px] cursor-pointer [&>*]:rounded-md">
+              <p className="p-2  hover:bg-gray-800 text-gray-500">Public</p>
+              <p className="p-2 hover:bg-gray-800 text-gray-500">Private</p>
+            </div>
+          </section>
+        </aside>
+        <div className="flex flex-1 p-5">
+          <div className=" rounded-md bg-yellow-300 size-[500px]"></div>
+        </div>
+      </main>
     </div>
   );
 };
