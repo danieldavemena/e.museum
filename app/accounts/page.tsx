@@ -2,12 +2,11 @@
 
 import React, { useEffect, useState } from "react";
 import AuthGate from "../components/authgate";
-import supabase from "@/lib/initSupabase";
 import Account from "../components/account";
+import supabase from "@/lib/initSupabase";
 
 const page = () => {
-  const [user, setUser] = useState(false);
-  const [display, setDisplay] = useState(<></>);
+  const [done, setDone] = useState<React.JSX.Element>();
 
   useEffect(() => {
     const getUser = async () => {
@@ -15,24 +14,19 @@ const page = () => {
         data: { user },
       } = await supabase.auth.getUser();
 
+      console.log(user);
+
       if (user) {
-        setUser(true);
-        setDisplay(<Account />);
+        setDone(<Account />);
       } else {
-        setUser(false);
-        setDisplay(<AuthGate />);
+        setDone(<AuthGate />);
       }
     };
 
     getUser();
   }, []);
 
-  return (
-    <div>
-      {/* {display} */}
-      <Account />
-    </div>
-  );
+  return <div>{done}</div>;
 };
 
 export default page;

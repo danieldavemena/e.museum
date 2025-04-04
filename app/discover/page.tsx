@@ -6,6 +6,7 @@ import ModalElement from "../components/modalelement";
 import supabase from "@/lib/initSupabase";
 import { LuFileImage, LuArrowBigLeft, LuCirclePlus } from "react-icons/lu";
 import Image from "next/image";
+import SeePost from "../components/seepost";
 
 const page = () => {
   const [data, setData] = useState<
@@ -26,8 +27,6 @@ const page = () => {
 
     if (data) {
       setData(data || []);
-
-      console.log("umuulit");
     }
   };
 
@@ -77,6 +76,9 @@ const page = () => {
       >
         <LuCirclePlus color="oklch(0.552 0.016 285.938)" size={50} />
       </div>
+      {/* Modal to see Post */}
+      {/* <SeePost src="/devImages/profile.jpg" /> */}
+
       {modal && <ModalElement closing={postModal} update={getData} />}
     </div>
   );

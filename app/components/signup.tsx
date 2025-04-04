@@ -6,6 +6,7 @@ import { register } from "../auth/auth";
 
 const login = () => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
 
@@ -18,12 +19,24 @@ const login = () => {
         </div>
 
         <form className="bg-gray-200 flex w-[500px] shadow-lg shadow-gray-800 flex-col gap-2 p-5 rounded-xl">
-          <h3 className="text-gray-700">Email:</h3>
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            className="rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
-            type="text"
-          />
+          <div className="flex flex-row gap-5 [&>*]:w-1/2 items-center justify-center">
+            <div>
+              <h3 className="text-gray-700">Email:</h3>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
+                type="text"
+              />
+            </div>
+            <div>
+              <h3 className="text-gray-700">Username:</h3>
+              <input
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full rounded-lg bg-gray-300 text-lg p-[5px] mb-5"
+                type="text"
+              />
+            </div>
+          </div>
           <h3 className="text-gray-700">Password:</h3>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -37,7 +50,7 @@ const login = () => {
             type="password"
           />
           <button
-            formAction={() => register(email, password, confirm)}
+            formAction={() => register(email, username, password, confirm)}
             className="text-gray-700 rounded-lg mt-5 bg-gray-300 shadow-md shadow-gray-400 text-xl p-2"
           >
             Register

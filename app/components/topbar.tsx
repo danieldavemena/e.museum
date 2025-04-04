@@ -33,7 +33,7 @@ const Topbar = () => {
         </nav>
       </div>
       <div className="flex text-white flex-row gap-3">
-        <Link href="/login">
+        <Link href="/accounts">
           <div className="flex flex-row gap-2 px-4 py-2 bg-gray-900 rounded-3xl">
             {session ? <div className="size-[25px] "></div> : <h3>Login</h3>}
           </div>

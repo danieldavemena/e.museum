@@ -4,12 +4,12 @@ import supabase from "@/lib/initSupabase";
 import { LuArrowBigLeft, LuFileImage } from "react-icons/lu";
 import Image from "next/image";
 
-interface ModalElementProps {
+interface props {
   closing: () => void;
   update: () => void;
 }
 
-const ModalElement: React.FC<ModalElementProps> = ({ closing, update }) => {
+const ModalElement: React.FC<props> = ({ closing, update }) => {
   const [photoFile, setFile] = useState<File | null>();
   const [title, setTitle] = useState("");
   const [descript, setDescript] = useState("");
