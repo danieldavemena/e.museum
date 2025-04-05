@@ -9,9 +9,9 @@ interface props {
 
 const seepost: React.FC<props> = ({ src, closing }) => {
   return (
-    <div className="fixed z-10 top-0 left-0 h-screen w-screen animate-fade-in flex flex-row items-center justify-center">
+    <div className="fixed z-10 top-0 left-0 h-screen w-screen animate-fade-in flex flex-row items-center bg-[#0000007f] backdrop-blur-lg justify-center">
       <div className="bg-gray-300 rounded-lg">
-        <div className="h-[600px] w-[1000px] overflow-hidden relative m-5">
+        <div className="h-[600px] w-[1000px] overflow-hidden relative m-7">
           <div
             onClick={closing}
             className="absolute top-0 right-0 cursor-pointer bg-red-400 rounded-lg size-max p-1"

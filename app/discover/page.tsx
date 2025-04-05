@@ -64,7 +64,7 @@ const page = () => {
           {data.map((datas) => {
             return (
               <div
-                className="text-gray-300 flex flex-col cursor-pointer gap-4 hover:scale-[1.02] hover:shadow-[0_0_10px_#ffffff] transition-all duration-150 ease-in-out"
+                className="text-gray-300 flex flex-col cursor-pointer gap-4 "
                 key={datas.id}
                 onClick={() => {
                   setImage(datas.image);
@@ -75,7 +75,7 @@ const page = () => {
                   width={500}
                   height={500}
                   unoptimized
-                  className="object-cover rounded-lg"
+                  className="object-cover rounded-lg hover:scale-[1.02] hover:shadow-[0_0_20px_#ffffff6f] transition-all duration-150 ease-in-out"
                   alt="post"
                 />
                 {datas.title}
