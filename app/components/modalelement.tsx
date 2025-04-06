@@ -41,6 +41,9 @@ const ModalElement: React.FC<props> = ({ closing, update }) => {
       const { data, error } = await supabase.storage
         .from("posts")
         .upload(fileString, photoFile);
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
 
       if (data) {
         const { data } = await supabase.storage
@@ -51,6 +54,7 @@ const ModalElement: React.FC<props> = ({ closing, update }) => {
             title: title,
             post_description: descript,
             image: data.publicUrl,
+            user_id: user?.id,
           });
         }
 
